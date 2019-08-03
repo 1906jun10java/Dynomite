@@ -19,9 +19,11 @@ public class OrmConfiguration {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1");
-		dataSource.setDriverClassName("org.h2.Driver");
-		// this in-memory db does not require credentials
+		dataSource.setUrl(System.getenv("DEMO_DB_URL"));
+		dataSource.setUsername(System.getenv("DEMO_DB_USERNAME"));
+		dataSource.setPassword(System.getenv("DEMO_DB_PASSWORD"));
+		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		//OJDBC Database with system environment credentials
 		return dataSource;
 	}
 	
@@ -37,7 +39,7 @@ public class OrmConfiguration {
 	private final Properties hibernateProperties() {
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
 		hibernateProperties.setProperty("hibernate.show-sql", "true");
 		return hibernateProperties;
 	}
