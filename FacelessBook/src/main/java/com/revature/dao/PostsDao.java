@@ -4,7 +4,10 @@ import com.revature.beans.Posts;
 
 public interface PostsDao {
 	
-	public String insertPost(Posts p);
+	public boolean insertPost(Posts p);
+	public boolean deletePost(Posts p);
+	public boolean updatePost(Posts p);
+	
 	
 
 }

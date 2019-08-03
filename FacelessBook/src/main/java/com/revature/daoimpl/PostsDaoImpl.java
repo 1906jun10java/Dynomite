@@ -1,20 +1,32 @@
 package com.revature.daoimpl;
 
+import javax.transaction.Transactional;
 
-import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
 import com.revature.beans.Posts;
 import com.revature.dao.PostsDao;
 
+@Repository(value="PostsDAO")
+@Transactional
 public class PostsDaoImpl implements PostsDao{
-	
-	
-	
-	@Transactional
+
 	@Override
-	public String insertPost(Posts p) {
-		return null;
+	public boolean insertPost(Posts p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deletePost(Posts p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updatePost(Posts p) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
