@@ -21,7 +21,7 @@ public class UsersDaoImpl implements UsersDao{
 	@Override
 	public List<Users> authenticateUser(Credentials credentials) {
 		Session s = sessionFactory.getCurrentSession();
-		return s.createQuery("from USERS where USERNAME = " + credentials.getUsername()).getResultList();
+		return s.createQuery("from USERS").getResultList();
 		
 	}
 
