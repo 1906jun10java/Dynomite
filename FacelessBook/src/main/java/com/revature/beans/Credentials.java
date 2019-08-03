@@ -13,8 +13,6 @@ import javax.persistence.Table;
 public class Credentials {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "credentialsSequence")
-	@SequenceGenerator(allocationSize = 1, name = "credentialsSequence", sequenceName = "SQ_CREDENTIALS_PK")
 	@Column(name = "USERNAME")
 	private String username;
 	@Column(name = "PASS")

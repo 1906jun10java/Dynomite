@@ -1,7 +1,9 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +24,7 @@ public class Posts {
 		super();
 		this.postID = postID;
 		this.content = content;
-		this.user = user;
+		this.users = user;
 		this.channelID = channelID;
 		this.likes = likes;
 		this.commentID = commentID;
@@ -31,7 +33,7 @@ public class Posts {
 	public Posts(String content, Users user, int channelID, int likes, int commentID) {
 		super();
 		this.content = content;
-		this.user = user;
+		this.users = user;
 		this.channelID = channelID;
 		this.likes = likes;
 		this.commentID = commentID;
@@ -44,9 +46,9 @@ public class Posts {
 	private int postID;
 	@Column(name = "CONTENT")
 	private String content;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	@JoinColumn(name="USER_ID")
-	private Users user;
+	private Users users;
 	@Column(name = "CHANNEL_ID")
 	private int channelID;
 	@Column(name = "LIKES")
@@ -74,11 +76,11 @@ public class Posts {
 	}
 
 	public Users getUser() {
-		return user;
+		return users;
 	}
 
-	public void setUser(Users user) {
-		this.user = user;
+	public void setUser(Users users) {
+		this.users = users;
 	}
 
 	public int getCommentID() {
@@ -121,7 +123,7 @@ public class Posts {
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + likes;
 		result = prime * result + postID;
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		return result;
 	}
 
@@ -148,10 +150,10 @@ public class Posts {
 			return false;
 		if (postID != other.postID)
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (users == null) {
+			if (other.users != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!users.equals(other.users))
 			return false;
 		return true;
 	}
@@ -159,7 +161,7 @@ public class Posts {
 
 	@Override
 	public String toString() {
-		return "Posts [postID=" + postID + ", content=" + content + ", user=" + user + ", channelID=" + channelID
+		return "Posts [postID=" + postID + ", content=" + content + ", user=" + users + ", channelID=" + channelID
 				+ ", likes=" + likes + ", commentID=" + commentID + "]";
 	}
 	

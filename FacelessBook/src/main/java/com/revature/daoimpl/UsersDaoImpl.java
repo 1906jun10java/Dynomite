@@ -1,7 +1,10 @@
 package com.revature.daoimpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
@@ -16,9 +19,10 @@ public class UsersDaoImpl implements UsersDao{
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public boolean authenticateUser(Credentials credentials) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Users> authenticateUser(Credentials credentials) {
+		Session s = sessionFactory.getCurrentSession();
+		return s.createQuery("from USERS where USERNAME = " + credentials.getUsername()).getResultList();
+		
 	}
 
 	@Override

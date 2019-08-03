@@ -1,7 +1,9 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ public class Users {
 	private String firstName;
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	@JoinColumn(name="USERNAME")
 	private Credentials credentials;
 	@Column(name = "MOD_STATUS")

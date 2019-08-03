@@ -19,6 +19,7 @@ public class OrmConfiguration {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		//Add system environment variables to Linux on build if possible
 		dataSource.setUrl(System.getenv("DEMO_DB_URL"));
 		dataSource.setUsername(System.getenv("DEMO_DB_USERNAME"));
 		dataSource.setPassword(System.getenv("DEMO_DB_PASSWORD"));

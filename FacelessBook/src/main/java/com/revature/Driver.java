@@ -14,12 +14,14 @@ public class Driver {
 		SessionFactory sf = ConnectionUtil.getSessionFactory();
 		
 		
-		/*
-		 * Session s = sf.openSession(); Transaction tx = s.beginTransaction();
-		 * 
-		 * Users test = new Users(1, "Richard", "DiCosmo", null, 1, 1,
-		 * "rjdicosmo@gmail.com"); s.persist(test); tx.commit(); s.close();
-		 */
+		
+		Session s = sf.openSession(); Transaction tx = s.beginTransaction();
+		 
+		Users test = new Users("Richard", "DiCosmo", null, 1, 1, "rjdicosmo@gmail.com"); 
+		s.persist(test); 
+		tx.commit(); 
+		s.close();
+		 
 		
 	}
 	
