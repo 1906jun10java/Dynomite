@@ -1,8 +1,23 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CREDENTIALS")
 public class Credentials {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "credentialsSequence")
+	@SequenceGenerator(allocationSize = 1, name = "credentialsSequence", sequenceName = "SQ_CREDENTIALS_PK")
+	@Column(name = "USERNAME")
 	private String username;
+	@Column(name = "PASS")
 	private String pass;
 	
 	

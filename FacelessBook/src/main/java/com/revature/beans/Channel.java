@@ -1,8 +1,23 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CHANNEL")
 public class Channel {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "channelSequence")
+	@SequenceGenerator(allocationSize = 1, name = "channelSequence", sequenceName = "SQ_CHANNEL_PK")
+	@Column(name = "CHANNEL_ID")
 	private int channelID;
+	@Column(name = "CHANNEL_NAME")
 	private String channelName;
 	
 	public Channel() {

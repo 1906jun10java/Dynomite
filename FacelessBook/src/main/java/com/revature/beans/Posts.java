@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,25 +18,25 @@ public class Posts {
 		super();
 	}
 	
-	public Posts(int postID, String content, int userID, int channelID, int likes) {
+	public Posts(int postID, String content, Users user, int channelID, int likes, int commentID) {
 		super();
 		this.postID = postID;
 		this.content = content;
-		this.userID = userID;
+		this.user = user;
 		this.channelID = channelID;
 		this.likes = likes;
+		this.commentID = commentID;
 	}
-	
-	public Posts(String content, int userID, int channelID, int likes) {
+
+	public Posts(String content, Users user, int channelID, int likes, int commentID) {
 		super();
 		this.content = content;
-		this.userID = userID;
+		this.user = user;
 		this.channelID = channelID;
 		this.likes = likes;
-		
+		this.commentID = commentID;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "postsSequence")
 	@SequenceGenerator(allocationSize = 1, name = "postsSequence", sequenceName = "SQ_POSTS_PK")
@@ -42,15 +44,16 @@ public class Posts {
 	private int postID;
 	@Column(name = "CONTENT")
 	private String content;
-	@Column(name = "USER_ID")
-	private int userID;
+	@ManyToOne
+	@JoinColumn(name="USER_ID")
+	private Users user;
 	@Column(name = "CHANNEL_ID")
 	private int channelID;
 	@Column(name = "LIKES")
 	private int likes;
+	@Column(name = "COMMENT_ID")
+	private int commentID;
 
-	
-	
 	public int getPostID() {
 		return postID;
 	}
@@ -70,16 +73,21 @@ public class Posts {
 		this.content = content;
 	}
 
-
-	public int getUserID() {
-		return userID;
+	public Users getUser() {
+		return user;
 	}
 
-
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
+	public int getCommentID() {
+		return commentID;
+	}
+
+	public void setCommentID(int commentID) {
+		this.commentID = commentID;
+	}
 
 	public int getChannelID() {
 		return channelID;
@@ -109,10 +117,11 @@ public class Posts {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + channelID;
+		result = prime * result + commentID;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + likes;
 		result = prime * result + postID;
-		result = prime * result + userID;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -128,6 +137,8 @@ public class Posts {
 		Posts other = (Posts) obj;
 		if (channelID != other.channelID)
 			return false;
+		if (commentID != other.commentID)
+			return false;
 		if (content == null) {
 			if (other.content != null)
 				return false;
@@ -137,7 +148,10 @@ public class Posts {
 			return false;
 		if (postID != other.postID)
 			return false;
-		if (userID != other.userID)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -145,8 +159,8 @@ public class Posts {
 
 	@Override
 	public String toString() {
-		return "Posts [postID=" + postID + ", content=" + content + ", userID=" + userID + ", channelID=" + channelID
-				+ ", likes=" + likes + "]";
+		return "Posts [postID=" + postID + ", content=" + content + ", user=" + user + ", channelID=" + channelID
+				+ ", likes=" + likes + ", commentID=" + commentID + "]";
 	}
 	
 	
