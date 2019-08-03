@@ -16,11 +16,11 @@ public class Driver {
 		  Session s = sf.openSession(); 
 		  Transaction tx = s.beginTransaction();
 		  
-		  Posts p = new Posts("I like Mexican food", 1, 1, 1); 
+		 /*Posts p = new Posts("I like Mexican food", 1, 1, 1); 
 		  s.save(p); 
 		  tx.commit();
 		  s.close();
-		 
+		 */
 		
 		
 	}
