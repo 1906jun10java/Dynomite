@@ -27,7 +27,7 @@ public class UsersController {
 	@RequestMapping(value="/{username}/{pass}", method=RequestMethod.POST)
 	public ResponseEntity<Users> getUserByUsername(@PathVariable String username, @PathVariable String pass) {
 		Credentials creds = new Credentials(username, pass);
-		Users f = userService.authenticateUserService(creds);
+		Users f = userService.authenticateUser(creds);
 		if (f == null) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		} else {
@@ -35,4 +35,4 @@ public class UsersController {
 		}
 	}
 
-}
+} 

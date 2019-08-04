@@ -1,6 +1,9 @@
 package com.revature.daoimpl;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -66,14 +69,25 @@ public class PostsDaoImpl implements PostsDao{
 	}
 	
 	@Transactional
-	public boolean getPostWithoutCommentID(Posts post) {
+	public List<Posts> getPostWitNoCommentID(Posts post) {
+		List<Posts> postList = new ArrayList<>();
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
 		Posts p = s.get(Posts.class, post.getCommentID());
 		
-		
-		return true;
-		
+		if(p.getCommentID() != 0) {
+			return null;
+		}else {
+			if(p.getCommentID() == 0) {
+				try {
+					postList = s.createQuery("from Posts").getResultList();
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+			return postList;
+		}
 	}
 
 	
