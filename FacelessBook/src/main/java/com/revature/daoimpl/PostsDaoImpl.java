@@ -23,7 +23,7 @@ public class PostsDaoImpl implements PostsDao{
 	private SessionFactory sf = ConnectionUtil.getSessionFactory();
 
 
-	@Transactional
+	@Override
 	public boolean insertPost(Posts post, Channel channel) {
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
@@ -39,7 +39,7 @@ public class PostsDaoImpl implements PostsDao{
 		
 	}
 
-	@Transactional
+	@Override
 	public boolean deletePost(Posts post) {
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
@@ -53,7 +53,7 @@ public class PostsDaoImpl implements PostsDao{
 		
 	}
 
-	@Transactional
+	@Override
 	public boolean updatePost(Posts post) {
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
@@ -68,26 +68,31 @@ public class PostsDaoImpl implements PostsDao{
 		}
 	}
 	
-	@Transactional
-	public List<Posts> getPostWitNoCommentID(Posts post) {
+	@Override
+	public List<Posts> getPostWithNoCommentID() {
 		List<Posts> postList = new ArrayList<>();
-		Session s = sf.openSession();
-		Transaction tx = s.beginTransaction();
-		Posts p = s.get(Posts.class, post.getCommentID());
-		
-		if(p.getCommentID() != 0) {
-			return null;
-		}else {
-			if(p.getCommentID() == 0) {
-				try {
-					postList = s.createQuery("from Posts").getResultList();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-				
-			}
-			return postList;
+		try(Session s = sf.openSession()) {
+			postList = s.createQuery("from POSTS WHERE COMMENT_ID IS null").getResultList();
 		}
+		return postList;
+	}
+	
+	@Override
+	public List<Posts> getPostByCommentID(Posts post){
+		List<Posts> postList = new ArrayList<>();
+		try(Session s = sf.openSession()) {
+			postList = s.createQuery("from POSTS WHERE COMMENT_ID=" + post.getPostID()).getResultList();
+		}
+		return postList;
+	}
+	
+	@Override
+	public List<Posts> getPostByChannelID(Channel channel){
+		List<Posts> postList = new ArrayList<>();
+		try(Session s = sf.openSession()) {
+			postList = s.createQuery("from POSTS WHERE CHANNEL_ID=" + channel.getChannelID()).getResultList();
+		}
+		return postList;
 	}
 
 	
