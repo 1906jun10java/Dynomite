@@ -25,12 +25,12 @@ public class Users {
 	private String firstName;
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@OneToOne
 	@JoinColumn(name="USERNAME")
 	private Credentials credentials;
 	@Column(name = "MOD_STATUS")
 	private int moderatorStatus;
-	@Column(name = "ACCESS")
+	@Column(name = "ACCESS_PERMISSION")
 	private int access;
 	@Column(name = "EMAIL")
 	private String email;

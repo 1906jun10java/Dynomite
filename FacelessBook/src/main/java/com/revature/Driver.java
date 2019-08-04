@@ -12,22 +12,14 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		SessionFactory sf = ConnectionUtil.getSessionFactory();
-		
-		
-		
+
 		Session s = sf.openSession(); 
 		Transaction tx = s.beginTransaction();
-		Credentials creds = new Credentials("Goombazio", "pass");
-		//Users test = new Users("Richard", "DiCosmo", creds, 1, 1, "rjdicosmo@gmail.com"); 
+		Credentials creds = s.get(Credentials.class, "Goombazio");
 		s.save(new Users("Richard", "DiCosmo", creds, 1, 1, "rjdicosmo@gmail.com"));
-		//s.persist(test); 
+
 		
 		tx.commit(); 
 		s.close();
-		 
-		
 	}
-	
-	
-
 }

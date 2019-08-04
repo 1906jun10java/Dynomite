@@ -1,11 +1,12 @@
 package com.revature.daoimpl;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import com.revature.beans.Credentials;
@@ -19,10 +20,12 @@ public class UsersDaoImpl implements UsersDao{
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public List<Users> authenticateUser(Credentials credentials) {
-		Session s = sessionFactory.getCurrentSession();
-		return s.createQuery("from USERS").getResultList();
-		
+	public Users authenticateUser(Credentials credentials) {
+		String sql = "SELECT * FROM USERS WHERE USERNAME IN (SELECT USERNAME FROM CREDENTIALS WHERE USERNAME="+credentials.getUsername()+" AND PASS="+ credentials.getPass();
+		Query<Users> query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		List<Users> lu = query.getResultList();
+		Users u = lu.get(0);
+		return u;
 	}
 
 	@Override
