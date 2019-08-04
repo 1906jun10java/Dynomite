@@ -38,7 +38,7 @@ public class Users {
 	public Users() {
 		super();
 	}
-	
+	 
 	public Users(int userID, String firstName, String lastName, Credentials credentials, int moderatorStatus,
 			int access, String email) {
 		super();

@@ -21,7 +21,7 @@ public class Credentials {
 	
 	public Credentials() {
 		super();
-	}
+	} 
 
 
 	public Credentials(String username, String pass) {

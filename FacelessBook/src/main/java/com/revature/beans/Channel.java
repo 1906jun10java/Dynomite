@@ -23,7 +23,7 @@ public class Channel {
 	public Channel() {
 		super();
 	}
-
+ 
 	public Channel(int channelID, String channelName) {
 		super();
 		this.channelID = channelID;

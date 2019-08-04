@@ -19,25 +19,29 @@ import javax.persistence.Table;
 @Table(name = "POSTS")
 public class Posts {
 	
+	
+
+
+
 	public Posts() {
 		super();
 	}
 	
-	public Posts(int postID, String content, Users user, int channelID, int likes, int commentID) {
+	public Posts(int postID, String content, Users user, Channel channel, int likes, int commentID) {
 		super();
 		this.postID = postID;
 		this.content = content;
 		this.users = user;
-		this.channelID = channelID;
+		this.channel = channel;
 		this.likes = likes;
 		this.commentID = commentID;
 	}
 
-	public Posts(String content, Users user, int channelID, int likes, int commentID) {
+	public Posts(String content, Users user, Channel channel, int likes, int commentID) {
 		super();
 		this.content = content;
 		this.users = user;
-		this.channelID = channelID;
+		this.channel = channel;
 		this.likes = likes;
 		this.commentID = commentID;
 	}
@@ -52,8 +56,9 @@ public class Posts {
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	@JoinColumn(name="USER_ID")
 	private Users users;
-	@Column(name = "CHANNEL_ID")
-	private int channelID;
+	@ManyToOne
+	@JoinColumn(name = "CHANNEL_ID")
+	private Channel channel;
 	@Column(name = "LIKES")
 	private int likes;
 	@Column(name = "COMMENT_ID")
@@ -106,15 +111,17 @@ public class Posts {
 		this.commentID = commentID;
 	}
 
-	public int getChannelID() {
-		return channelID;
+	
+	
+
+
+	public Channel getChannel() {
+		return channel;
 	}
 
-
-	public void setChannelID(int channelID) {
-		this.channelID = channelID;
+	public void setChannel(Channel channel) {
+		this.channel = channel;
 	}
-
 
 	public int getLikes() {
 		return likes;
@@ -133,11 +140,12 @@ public class Posts {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + channelID;
+		result = prime * result + ((channel == null) ? 0 : channel.hashCode());
 		result = prime * result + commentID;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + likes;
 		result = prime * result + postID;
+		result = prime * result + ((timeStamp == null) ? 0 : timeStamp.hashCode());
 		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		return result;
 	}
@@ -152,7 +160,10 @@ public class Posts {
 		if (getClass() != obj.getClass())
 			return false;
 		Posts other = (Posts) obj;
-		if (channelID != other.channelID)
+		if (channel == null) {
+			if (other.channel != null)
+				return false;
+		} else if (!channel.equals(other.channel))
 			return false;
 		if (commentID != other.commentID)
 			return false;
@@ -165,6 +176,11 @@ public class Posts {
 			return false;
 		if (postID != other.postID)
 			return false;
+		if (timeStamp == null) {
+			if (other.timeStamp != null)
+				return false;
+		} else if (!timeStamp.equals(other.timeStamp))
+			return false;
 		if (users == null) {
 			if (other.users != null)
 				return false;
@@ -176,8 +192,8 @@ public class Posts {
 
 	@Override
 	public String toString() {
-		return "Posts [postID=" + postID + ", content=" + content + ", user=" + users + ", channelID=" + channelID
-				+ ", likes=" + likes + ", commentID=" + commentID + "]";
+		return "Posts [postID=" + postID + ", content=" + content + ", users=" + users + ", channel=" + channel
+				+ ", likes=" + likes + ", commentID=" + commentID + ", timeStamp=" + timeStamp + "]";
 	}
 	
 	

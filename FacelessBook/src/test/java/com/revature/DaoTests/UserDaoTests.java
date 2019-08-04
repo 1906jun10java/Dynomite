@@ -24,4 +24,6 @@ public class UserDaoTests {
 		//Users actual = new Users(1, "Richard", "DiCosmo", null, 1, 1, "rjdicosmo@gmail.com");
 		assertTrue(sessionFactory.getCurrentSession().contains(test));
 	}
+	
+	
 }
