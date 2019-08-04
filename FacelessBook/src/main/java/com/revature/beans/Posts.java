@@ -1,5 +1,8 @@
 package com.revature.beans;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,6 +58,26 @@ public class Posts {
 	private int likes;
 	@Column(name = "COMMENT_ID")
 	private int commentID;
+	@Column(name = "TIME_STAMP")
+	private Timestamp timeStamp;
+
+	
+	
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public Timestamp getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(Timestamp timeStamp) {
+		this.timeStamp = timeStamp;
+	}
 
 	public int getPostID() {
 		return postID;
@@ -73,14 +96,6 @@ public class Posts {
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public Users getUser() {
-		return users;
-	}
-
-	public void setUser(Users users) {
-		this.users = users;
 	}
 
 	public int getCommentID() {

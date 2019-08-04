@@ -18,7 +18,7 @@ public class ConnectionUtil {
 			c.setProperty("hibernate.connection.username", System.getenv("DEMO_DB_USERNAME"));
 			c.setProperty("hibernate.connection.password", System.getenv("DEMO_DB_PASSWORD"));
 			c.setProperty("hibernate.connection.url", System.getenv("DEMO_DB_URL"));
-			c.setProperty("hibernate.hbm2ddl.auto", "update");
+			c.setProperty("hibernate.hbm2ddl.auto", "create");
 			c.configure(); // by default, looks for a hibernate.cfg.xml in src/main/resources
 			sessionFactory = c.buildSessionFactory();
 		}
