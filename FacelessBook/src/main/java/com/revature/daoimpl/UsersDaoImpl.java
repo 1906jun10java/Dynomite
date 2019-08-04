@@ -1,6 +1,5 @@
 package com.revature.daoimpl;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -44,11 +43,13 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean createUser(Users user) {
+	public boolean createUser(Users user, Credentials credential) {
 		Session s = sf.openSession();
 		Transaction tx = s.beginTransaction();
 		try {
-			s.persist(user);
+			s.save(credential);
+			user.setCredentials(credential);
+			s.save(user);
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
