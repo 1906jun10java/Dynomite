@@ -7,5 +7,6 @@ public interface UsersDao {
 
 	public Users authenticateUser(Credentials credentials);
 	public boolean createUser(Users user, Credentials credential);
+	public boolean banUser(Users user);
 	
 }

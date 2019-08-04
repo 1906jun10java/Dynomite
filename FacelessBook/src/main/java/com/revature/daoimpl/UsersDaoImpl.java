@@ -57,4 +57,21 @@ public class UsersDaoImpl implements UsersDao{
 		}
 	}
 
+	@Override
+	public boolean banUser(Users user) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		try {
+			Users updatedUser = s.get(Users.class, user.getUserID());
+			updatedUser.setAccess(0);
+			s.update(updatedUser);
+			return true;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	
+
 }

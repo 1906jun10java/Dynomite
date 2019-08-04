@@ -1,6 +1,5 @@
 package com.revature.service;
 
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +17,12 @@ public class UserService {
 		this.usersDao = usersDao;
 	}
 	
-	public Users authenticateUserService(Credentials credentials) {
-	
-		return null;
+	public Users authenticateUser(Credentials credentials) {
+		return this.usersDao.authenticateUser(credentials);
 	}
 	
-	public boolean createUser(Users user){
-		return this.usersDao.createUser(user);
+	public boolean createUser(Users user, Credentials credential){
+		return this.usersDao.createUser(user, credential);
 	}
 	
 
