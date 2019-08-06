@@ -28,7 +28,7 @@ public class UsersDaoImpl implements UsersDao{
 		Users u = null;
 		//String sql = "SELECT * FROM USERS WHERE USERNAME IN (SELECT USERNAME FROM CREDENTIALS WHERE USERNAME="+credentials.getUsername()+" AND PASS="+ credentials.getPass();
 		Session s = sessionFactory.getCurrentSession();
-		Credentials creds = s.load(Credentials.class, credentials.getUsername());
+		Credentials creds = s.get(Credentials.class, credentials.getUsername());
 		System.out.println(creds);
 		if(creds.getPass().equals(credentials.getPass())) {
 			String hql = "FROM Users WHERE USERNAME='" + credentials.getUsername() + "'";

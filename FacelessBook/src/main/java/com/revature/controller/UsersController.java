@@ -33,19 +33,5 @@ public class UsersController {
 	public Users getCredentials(@RequestBody Credentials credentials) {
 		return userService.authenticateUser(credentials);
 	}
-	
-	
-	/*
-	@RequestMapping(value="/{username}/{pass}", method=RequestMethod.POST)
-	public ResponseEntity<Users> getUserByUsername(@PathVariable String username, @PathVariable String pass) {
-		Credentials creds = new Credentials(username, pass);
-		Users f = userService.authenticateUser(creds);
-		if (f == null) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		} else {
-			return new ResponseEntity<>(f, HttpStatus.OK);
-		}
-	}
-	*/
 
 } 
