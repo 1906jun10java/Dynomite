@@ -16,7 +16,6 @@ import com.revature.dao.UsersDao;
 import com.revature.util.ConnectionUtil;
 
 @Repository(value="UsersDAO")
-@Transactional
 public class UsersDaoImpl implements UsersDao{
 
 	private SessionFactory sf = ConnectionUtil.getSessionFactory();

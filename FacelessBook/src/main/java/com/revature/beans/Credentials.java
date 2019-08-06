@@ -8,14 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="CREDENTIALS")
 public class Credentials {
 	
-	@Id
-	@Column(name = "USERNAME")
 	private String username;
-	@Column(name = "PASS")
 	private String pass;
 	
 	
