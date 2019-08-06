@@ -40,7 +40,7 @@ public class OrmConfiguration {
 	private final Properties hibernateProperties() {
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.OracleDialect");
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		hibernateProperties.setProperty("hibernate.show-sql", "true");
 		return hibernateProperties;
 	}

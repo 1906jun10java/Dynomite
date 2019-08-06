@@ -1,21 +1,29 @@
-package com.revature.daoimpl;
+package com.revature.dao;
+
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.revature.beans.Channel;
 import com.revature.dao.ChannelDao;
-import com.revature.util.ConnectionUtil;
 
+@Repository(value="ChannelDAO")
+@Transactional
 public class ChannelDaoImpl implements ChannelDao{
 	
-	private SessionFactory sf = ConnectionUtil.getSessionFactory();
+private SessionFactory sessionFactory;
+	
+	@Autowired //constructor injection
+	public ChannelDaoImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public boolean createChannel(Channel channel) {
-		Session s = sf.openSession();
-		Transaction tx = s.beginTransaction();
+		Session s = sessionFactory.getCurrentSession();
 		try {
 			if(s.load(Channel.class, channel.getChannelID()) == null) {
 				s.save(channel);
