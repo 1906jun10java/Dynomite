@@ -33,5 +33,12 @@ public class UsersController {
 	public Users getCredentials(@RequestBody Credentials credentials) {
 		return userService.authenticateUser(credentials);
 	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@PostMapping(value="/signup", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public boolean createUser(@RequestBody Users user, Credentials credentials) {
+		return userService.createUser(user, credentials);
+	}
+
 
 } 
