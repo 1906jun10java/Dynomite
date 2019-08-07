@@ -4,5 +4,5 @@ import com.revature.beans.Channel;
 
 public interface ChannelDao {
 
-	public boolean createChannel(Channel channel);
+	public String createChannel(Channel channel);
 }

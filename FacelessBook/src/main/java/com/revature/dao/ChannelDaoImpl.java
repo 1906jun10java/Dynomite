@@ -22,19 +22,20 @@ private SessionFactory sessionFactory;
 	}
 
 	@Override
-	public boolean createChannel(Channel channel) {
+	public String createChannel(Channel channel) {
 		Session s = sessionFactory.getCurrentSession();
+		//System.out.println(channel.getChannelID() + channel.getChannelName());
+		//System.out.println(s.get(Channel.class, channel.getChannelID()));
 		try {
-			if(s.load(Channel.class, channel.getChannelID()) == null) {
+			if(s.get(Channel.class, channel.getChannelID()) == null) {
 				s.save(channel);
-				return true;
+				return "Channel " + channel.getChannelName() + " successfully created";
 			}else {
-				System.out.println("Channel already exists");
-				return false;
+				return "Channel already exists";
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			return false;
+			return "An error occured";
 		}
 	}
 

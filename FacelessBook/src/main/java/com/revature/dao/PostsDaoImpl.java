@@ -62,7 +62,7 @@ public class PostsDaoImpl implements PostsDao{
 		Session s = sessionFactory.getCurrentSession();
 		try {
 			Posts p = s.get(Posts.class, post.getPostID());
-			p.setContent("Inappripriate content. Blocked by Moderator");
+			p.setContent("Inappropriate content. Blocked by Moderator");
 			s.update(p);
 			return true;
 		}catch(Exception e) {
@@ -76,7 +76,7 @@ public class PostsDaoImpl implements PostsDao{
 	public List<Posts> getPostWithNoCommentID() {
 		List<Posts> postList = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
-		postList = s.createQuery("from POSTS WHERE COMMENT_ID IS null").getResultList();
+		postList = s.createQuery("from Posts WHERE commentID IS 0").getResultList();
 		return postList;
 	}
 	
@@ -85,7 +85,7 @@ public class PostsDaoImpl implements PostsDao{
 	public List<Posts> getPostByCommentID(Posts post){
 		List<Posts> postList = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
-		postList = s.createQuery("from POSTS WHERE COMMENT_ID=" + post.getPostID()).getResultList();
+		postList = s.createQuery("from Posts WHERE commentID=" + post.getPostID()).getResultList();
 		return postList;
 	}
 	
@@ -94,7 +94,7 @@ public class PostsDaoImpl implements PostsDao{
 	public List<Posts> getPostByChannelID(Channel channel){
 		List<Posts> postList = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
-		postList = s.createQuery("from POSTS WHERE CHANNEL_ID=" + channel.getChannelID()).getResultList();
+		postList = s.createQuery("from Posts WHERE channelID=" + channel.getChannelID()).getResultList();
 		return postList;
 	}
 

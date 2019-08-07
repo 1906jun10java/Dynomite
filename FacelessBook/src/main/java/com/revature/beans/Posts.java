@@ -17,10 +17,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "POSTS")
 public class Posts {
-	
-	
-
-
 
 	public Posts() {
 		super();
