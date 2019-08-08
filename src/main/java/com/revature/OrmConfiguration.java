@@ -20,7 +20,7 @@ public class OrmConfiguration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		//Add system environment variables to Linux on build if possible
-		dataSource.setUrl(System.getenv("DEMO_DB_URL"));
+		dataSource.setUrl("jdbc:oracle:thin:@rjdicosmodb.cuzlyxxdnsdj.us-east-1.rds.amazonaws.com:1521:ORCL");
 		dataSource.setUsername(System.getenv("DEMO_DB_USERNAME"));
 		dataSource.setPassword(System.getenv("DEMO_DB_PASSWORD"));
 		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
