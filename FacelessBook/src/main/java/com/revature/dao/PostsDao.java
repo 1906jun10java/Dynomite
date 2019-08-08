@@ -2,16 +2,15 @@ package com.revature.dao;
 
 import java.util.List;
 
-import com.revature.beans.Channel;
-import com.revature.beans.Posts;
+import com.revature.beans.PostsINF;
 
 public interface PostsDao {
 	
-	public boolean insertPost(Posts p, Channel channel);
-	public boolean deletePost(Posts p);
-	public boolean updatePost(Posts p);
-	public List<Posts> getPostWithNoCommentID();
-	public List<Posts> getPostByCommentID(Posts post);
-	public List<Posts> getPostByChannelID(Channel channel);
+	public String insertPost(PostsINF input);
+	public String deletePost(PostsINF input);
+	public String updatePost(PostsINF input);
+	public List<PostsINF> getPostWithNoCommentID();
+	public List<PostsINF> getPostByCommentID(int id);
+	public List<PostsINF> getPostByChannelID(String channelName);
 
 }

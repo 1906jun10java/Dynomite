@@ -19,7 +19,7 @@ public class ChannelService {
 		this.channelDao = channelDao;
 	}
 	
-	public boolean createChannel(Channel channel) {
+	public String createChannel(Channel channel) {
 		return this.channelDao.createChannel(channel);
 	}
 

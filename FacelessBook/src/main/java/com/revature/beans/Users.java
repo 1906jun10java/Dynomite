@@ -32,13 +32,15 @@ public class Users {
 	private int access;
 	@Column(name = "EMAIL")
 	private String email;
+	@Column(name = "IMAGE_REF")
+	private String imageURL;
 	
 	public Users() {
 		super();
 	}
 	 
 	public Users(int userID, String firstName, String lastName, Credentials credentials, int moderatorStatus,
-			int access, String email) {
+			int access, String email, String imageURL) {
 		super();
 		UserID = userID;
 		this.firstName = firstName;
@@ -47,10 +49,11 @@ public class Users {
 		this.moderatorStatus = moderatorStatus;
 		this.access = access;
 		this.email = email;
+		this.imageURL = imageURL;
 	}
 
 	public Users(String firstName, String lastName, Credentials credentials, int moderatorStatus, int access,
-			String email) {
+			String email, String imageURL) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -58,6 +61,16 @@ public class Users {
 		this.moderatorStatus = moderatorStatus;
 		this.access = access;
 		this.email = email;
+		this.imageURL = imageURL;
+	}
+
+	
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	public int getUserID() {
@@ -125,6 +138,7 @@ public class Users {
 		result = prime * result + ((credentials == null) ? 0 : credentials.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((imageURL == null) ? 0 : imageURL.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + moderatorStatus;
 		return result;
@@ -158,6 +172,11 @@ public class Users {
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
+		if (imageURL == null) {
+			if (other.imageURL != null)
+				return false;
+		} else if (!imageURL.equals(other.imageURL))
+			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
@@ -176,7 +195,7 @@ public class Users {
 	public String toString() {
 		return "Users [UserID=" + UserID + ", firstName=" + firstName + ", lastName=" + lastName + ", credentials="
 				+ credentials + ", moderatorStatus=" + moderatorStatus + ", access=" + access + ", email=" + email
-				+ "]";
+				+ ", imageURL=" + imageURL + "]";
 	}
 	
 	
