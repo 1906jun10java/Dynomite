@@ -5,8 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.revature.beans.Channel;
-import com.revature.beans.Posts;
+import com.revature.beans.PostsINF;
 import com.revature.dao.PostsDao;
 
 @Service
@@ -19,28 +18,28 @@ public class PostService {
 		this.postsDao = postsDao;
 	}
 	
-	public boolean insertPost(Posts p, Channel channel) {
-		return this.postsDao.insertPost(p, channel);
+	public String insertPost(PostsINF info) {
+		return this.postsDao.insertPost(info);
 	}
 	
-	public boolean deletePost(Posts p) {
-		return this.postsDao.deletePost(p);
+	public String deletePost(PostsINF info) {
+		return this.postsDao.deletePost(info);
 	}
 	
-	public boolean updatePost(Posts p) {
-		return this.postsDao.updatePost(p);
+	public String updatePost(PostsINF info) {
+		return this.postsDao.updatePost(info);
 	}
 	
-	public List<Posts> getPostWithNoCommentID(){
+	public List<PostsINF> getPostWithNoCommentID(){
 		return this.postsDao.getPostWithNoCommentID();
 	}
 	
-	public List<Posts> getPostByCommentID(Posts post){
-		return this.postsDao.getPostByCommentID(post);
+	public List<PostsINF> getPostByCommentID(int id){
+		return this.postsDao.getPostByCommentID(id);
 	}
 	
-	public List<Posts> getPostByChannelID(Channel channel){
-		return this.postsDao.getPostByChannelID(channel);
+	public List<PostsINF> getPostByChannelID(String channelName){
+		return this.postsDao.getPostByChannelID(channelName);
 	}
 	
 

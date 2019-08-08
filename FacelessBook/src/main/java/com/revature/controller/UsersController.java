@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.CreatedUserINF;
 import com.revature.beans.Credentials;
-import com.revature.beans.Users;
+import com.revature.beans.UsersINF;
 import com.revature.service.UserService;
 
 
@@ -30,14 +31,20 @@ public class UsersController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/login", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public Users getCredentials(@RequestBody Credentials credentials) {
+	public UsersINF getCredentials(@RequestBody Credentials credentials) {
 		return userService.authenticateUser(credentials);
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/signup", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public boolean createUser(@RequestBody Users user, Credentials credentials) {
-		return userService.createUser(user, credentials);
+	public boolean createUser(@RequestBody CreatedUserINF input) {
+		return userService.createUser(input);
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@PostMapping(value="/ban", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public boolean banUser(@RequestBody String username) {
+		return userService.banUser(username);
 	}
 
 

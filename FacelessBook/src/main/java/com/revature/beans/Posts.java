@@ -1,7 +1,5 @@
 package com.revature.beans;
 
-import java.sql.Timestamp;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -59,7 +57,7 @@ public class Posts {
 	@Column(name = "COMMENT_ID")
 	private int commentID;
 	@Column(name = "TIME_STAMP")
-	private Timestamp timeStamp;
+	private String timeStamp;
 
 	
 	
@@ -71,11 +69,11 @@ public class Posts {
 		this.users = users;
 	}
 
-	public Timestamp getTimeStamp() {
+	public String getTimeStamp() {
 		return timeStamp;
 	}
 
-	public void setTimeStamp(Timestamp timeStamp) {
+	public void setTimeStamp(String timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 

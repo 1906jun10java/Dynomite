@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <!--   -->
+    <img id="dynamite" src="../assets/dynomite-pic.png">
+     <span><a href="/">DYNOMITE</a></span>
+     <span class="spacer"></span>
+     <mat-menu #navbarMenu=matMenu>
+        <a mat-menu-item routerLink="/">Home</a>
+      <a mat-menu-item routerLink="/register">Register</a>
+      <a mat-menu-item routerLink="/login">Login</a>
+      <a mat-menu-item routerLink="/profile">Profile</a>
+      <a mat-menu-item routerLink="/profile-edit">Edit Your Profile</a>
+      <a mat-menu-item routerLink="/">Logout</a>
+     </mat-menu>
+
+     <button mat-icon-button [matMenuTriggerFor]="navbarMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

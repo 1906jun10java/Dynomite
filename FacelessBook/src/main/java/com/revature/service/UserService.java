@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.revature.beans.CreatedUserINF;
 import com.revature.beans.Credentials;
-import com.revature.beans.Users;
+import com.revature.beans.UsersINF;
 import com.revature.dao.UsersDao;
 
 @Service
@@ -18,12 +19,16 @@ public class UserService {
 		this.usersDao = usersDao;
 	}
 	@Transactional
-	public Users authenticateUser(Credentials credentials) {
+	public UsersINF authenticateUser(Credentials credentials) {
 		return this.usersDao.authenticateUser(credentials);
 	}
 	@Transactional
-	public boolean createUser(Users user, Credentials credential){
-		return this.usersDao.createUser(user, credential);
+	public boolean createUser(CreatedUserINF input){
+		return this.usersDao.createUser(input);
+	}
+	@Transactional
+	public boolean banUser(String username){
+		return this.usersDao.banUser(username);
 	}
 	
 

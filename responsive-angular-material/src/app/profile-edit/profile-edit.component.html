@@ -1,0 +1,49 @@
+<mat-accordion>
+    <mat-expansion-panel 
+        (opened)="panelFirstState = true"
+        (closed)="panelFirstState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal data
+        </mat-panel-title>
+        <mat-panel-description>
+            {{panelFirstState ? 'Click Submit to Confirm' : 'Edit Your Information'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <div class="flexbox">
+      <mat-form-field>
+          <input matInput placeholder="Email">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="First Name">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input matInput placeholder="Last Name">
+      </mat-form-field>
+
+      <button mat-flat-button color="primary">Submit</button>
+    </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Password
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenState ? 'Click Submit to Confirm' : 'Change Your Password'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+          <input matInput placeholder="New Password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Confrim Password">
+      </mat-form-field>
+      <button mat-flat-button color="primary">Submit</button>
+    </mat-expansion-panel>
+  </mat-accordion>

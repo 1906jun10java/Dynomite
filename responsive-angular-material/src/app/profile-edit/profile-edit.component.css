@@ -1,0 +1,15 @@
+.flexbox{
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+
+
+  }
+
+  mat-form-field{
+     margin: 0 15px;  /* the first number controls top and bottom, second number controls right and left */
+  }
+
+  button{
+      height: 75%;
+  }
