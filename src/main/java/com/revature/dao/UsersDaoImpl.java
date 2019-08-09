@@ -54,7 +54,7 @@ public class UsersDaoImpl implements UsersDao{
 				return "Password too generic, please try again with a new password.";
 			}
 			Credentials credential = new Credentials(input.getUsername(), input.getPass());
-			Users user = new Users(input.getFirstName(), input.getLastName(), null, input.getModStatus(), input.getAccessPermission(), input.getEmail(), input.getImageURL());
+			Users user = new Users(input.getFirstName(), input.getLastName(), null, input.getModeratorStatus(), input.getAccess(), input.getEmail(), input.getImageURL());
 			s.save(credential);
 			user.setCredentials(credential);
 			s.save(user);
@@ -85,6 +85,24 @@ public class UsersDaoImpl implements UsersDao{
 		}
 	}
 	
+	@Override
+	public String updateUser(CreatedUserINF input) {
+		Session s = sessionFactory.getCurrentSession();
+		try {
+			if(input.getPass() == "password" || input.getPass() == "Password") {
+				return "Password too generic, please try again with a new password.";
+			}
+			Credentials credential = new Credentials(input.getUsername(), input.getPass());
+			Users user = new Users(input.getFirstName(), input.getLastName(), null, input.getModeratorStatus(), input.getAccess(), input.getEmail(), input.getImageURL());
+			s.update(credential);
+			user.setCredentials(credential);
+			s.update(user);
+			return "User information updated successfully.";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "An error occured, please try again.";
+		}
+	}
 	
 
 }

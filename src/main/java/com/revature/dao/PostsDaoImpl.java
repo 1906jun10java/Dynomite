@@ -107,7 +107,7 @@ public class PostsDaoImpl implements PostsDao{
 		List<Posts> postList = new ArrayList<>();
 		List<PostsINF> sendList = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
-		postList = s.createQuery("from Posts WHERE commentID IS 0").getResultList();
+		postList = s.createQuery("from Posts WHERE commentID IS 0 ORDER BY timeStamp").getResultList();
 		for(int i = 0; i < postList.size(); i++) {
 			//Converts the result set to an info list for sending via JSON
 			sendList.add(i, new PostsINF(postList.get(i).getPostID(), postList.get(i).getUsers().getCredentials().getUsername(), postList.get(i).getContent(), postList.get(i).getChannel().getChannelName(), postList.get(i).getCommentID(), postList.get(i).getLikes(), postList.get(i).getTimeStamp()));
@@ -121,7 +121,7 @@ public class PostsDaoImpl implements PostsDao{
 		List<Posts> postList = new ArrayList<>();
 		List<PostsINF> sendList = new ArrayList<>();
 		Session s = sessionFactory.getCurrentSession();
-		postList = s.createQuery("from Posts WHERE commentID='" + id + "'").getResultList();
+		postList = s.createQuery("from Posts WHERE commentID='" + id + "' ORDER BY timeStamp").getResultList();
 		for(int i = 0; i < postList.size(); i++) {
 			//Converts the result set to an info list for sending via JSON
 			sendList.add(i, new PostsINF(postList.get(i).getPostID(), postList.get(i).getUsers().getCredentials().getUsername(), postList.get(i).getContent(), postList.get(i).getChannel().getChannelName(), postList.get(i).getCommentID(), postList.get(i).getLikes(), postList.get(i).getTimeStamp()));
@@ -139,7 +139,7 @@ public class PostsDaoImpl implements PostsDao{
 		List<Channel> channelList = new ArrayList<>();
 		channelList = s.createQuery("from Channel WHERE channelName= '" + channelName + "'").getResultList();
 		Channel c = channelList.get(0);
-		postList = s.createQuery("from Posts WHERE CHANNEL_ID = '" + c.getChannelID() + "'").getResultList();
+		postList = s.createQuery("from Posts WHERE CHANNEL_ID = '" + c.getChannelID() + "' AND COMMENT_ID IS 0 ORDER BY timeStamp").getResultList();
 		for(int i = 0; i < postList.size(); i++) {
 			//Converts the result set to an info list for sending via JSON
 			sendList.add(i, new PostsINF(postList.get(i).getPostID(), postList.get(i).getUsers().getCredentials().getUsername(), postList.get(i).getContent(), postList.get(i).getChannel().getChannelName(), postList.get(i).getCommentID(), postList.get(i).getLikes(), postList.get(i).getTimeStamp()));

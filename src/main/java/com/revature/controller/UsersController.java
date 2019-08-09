@@ -42,6 +42,12 @@ public class UsersController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
+	@PostMapping(value="/update", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public String updateUser(@RequestBody CreatedUserINF input) {
+		return userService.updateUser(input);
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/ban", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String banUser(@RequestBody String username) {
 		return userService.banUser(username);

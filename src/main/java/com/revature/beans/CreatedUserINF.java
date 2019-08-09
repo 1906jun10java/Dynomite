@@ -7,20 +7,20 @@ public class CreatedUserINF {
 	private String lastName;
 	private String username;
 	private String pass;
-	private int modStatus;
-	private int accessPermission;
+	private int moderatorStatus;
+	private int access;
 	private String email;
 	private String imageURL;
 	
-	public CreatedUserINF(String firstName, String lastName, String username, String pass, int modStatus,
-			int accessPermission, String email, String imageURL) {
+	public CreatedUserINF(String firstName, String lastName, String username, String pass, int moderatorStatus,
+			int access, String email, String imageURL) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.pass = pass;
-		this.modStatus = modStatus;
-		this.accessPermission = accessPermission;
+		this.moderatorStatus = moderatorStatus;
+		this.access = access;
 		this.email = email;
 		this.imageURL = imageURL;
 	}
@@ -72,20 +72,20 @@ public class CreatedUserINF {
 		this.pass = pass;
 	}
 
-	public int getModStatus() {
-		return modStatus;
+	public int getModeratorStatus() {
+		return moderatorStatus;
 	}
 
-	public void setModStatus(int modStatus) {
-		this.modStatus = modStatus;
+	public void setModeratorStatus(int moderatorStatus) {
+		this.moderatorStatus = moderatorStatus;
 	}
 
-	public int getAccessPermission() {
-		return accessPermission;
+	public int getAccess() {
+		return access;
 	}
 
-	public void setAccessPermission(int accessPermission) {
-		this.accessPermission = accessPermission;
+	public void setAccessPermission(int access) {
+		this.access = access;
 	}
 
 	public String getEmail() {
@@ -100,12 +100,12 @@ public class CreatedUserINF {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + accessPermission;
+		result = prime * result + access;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((imageURL == null) ? 0 : imageURL.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + modStatus;
+		result = prime * result + moderatorStatus;
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -120,7 +120,7 @@ public class CreatedUserINF {
 		if (getClass() != obj.getClass())
 			return false;
 		CreatedUserINF other = (CreatedUserINF) obj;
-		if (accessPermission != other.accessPermission)
+		if (access != other.access)
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -142,7 +142,7 @@ public class CreatedUserINF {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (modStatus != other.modStatus)
+		if (moderatorStatus != other.moderatorStatus)
 			return false;
 		if (pass == null) {
 			if (other.pass != null)
@@ -160,7 +160,7 @@ public class CreatedUserINF {
 	@Override
 	public String toString() {
 		return "CreatedUserINF [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", pass=" + pass + ", modStatus=" + modStatus + ", accessPermission=" + accessPermission + ", email="
+				+ ", pass=" + pass + ", modStatus=" + moderatorStatus + ", accessPermission=" + access + ", email="
 				+ email + ", imageURL=" + imageURL + "]";
 	}
 	

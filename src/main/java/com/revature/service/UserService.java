@@ -30,6 +30,10 @@ public class UserService {
 	public String banUser(String username){
 		return this.usersDao.banUser(username);
 	}
+	@Transactional
+	public String updateUser(CreatedUserINF input) {
+		return this.usersDao.updateUser(input);
+	}
 	
 
 }
