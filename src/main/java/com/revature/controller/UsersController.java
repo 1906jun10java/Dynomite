@@ -15,9 +15,8 @@ import com.revature.beans.Credentials;
 import com.revature.beans.UsersINF;
 import com.revature.service.UserService;
 
-
-@RestController
 @CrossOrigin
+@RestController
 @RequestMapping(value="/users")
 public class UsersController {
 	
