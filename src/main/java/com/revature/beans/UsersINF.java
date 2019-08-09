@@ -21,9 +21,11 @@ public class UsersINF {
 		this.accessPermission = accessPermission;
 		this.email = email;
 		this.imageURL = imageURL;
-		
 	}
 
+	public UsersINF() {
+		super();
+	}
 	
 	public String getImageURL() {
 		return imageURL;
