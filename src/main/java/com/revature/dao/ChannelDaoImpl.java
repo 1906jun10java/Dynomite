@@ -1,5 +1,8 @@
 package com.revature.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -8,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.beans.Channel;
+import com.revature.beans.Posts;
+import com.revature.beans.PostsINF;
 import com.revature.dao.ChannelDao;
 
 @Repository(value="ChannelDAO")
@@ -37,6 +42,20 @@ private SessionFactory sessionFactory;
 			e.printStackTrace();
 			return "An error occured";
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getAllChannels(){
+		List<Channel> dataList = new ArrayList<>();
+		List<String> channelList = new ArrayList<>();
+		Session s = sessionFactory.getCurrentSession();
+		//Gets all channels
+		dataList = s.createQuery("from Channel").getResultList();
+		for(int i =0; i < dataList.size(); i++) {
+			channelList.add(dataList.get(i).getChannelName());
+		}
+		return channelList;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,10 @@ public class ChannelService {
 	
 	public String createChannel(Channel channel) {
 		return this.channelDao.createChannel(channel);
+	}
+	
+	public List<String> getAllChannels(){
+		return this.channelDao.getAllChannels();
 	}
 
 }
