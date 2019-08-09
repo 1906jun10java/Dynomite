@@ -9,6 +9,6 @@ public interface UsersDao {
 	public UsersINF authenticateUser(Credentials credentials);
 	public String createUser(CreatedUserINF input);
 	public String banUser(String username);
-	public String updateUser(CreatedUserINF input);
+	public String updateUser(UsersINF input);
 	
 }

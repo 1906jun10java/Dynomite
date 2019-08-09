@@ -31,7 +31,7 @@ public class UserService {
 		return this.usersDao.banUser(username);
 	}
 	@Transactional
-	public String updateUser(CreatedUserINF input) {
+	public String updateUser(UsersINF input) {
 		return this.usersDao.updateUser(input);
 	}
 	

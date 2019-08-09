@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.revature.beans.Channel;
-import com.revature.beans.Posts;
-import com.revature.beans.PostsINF;
 import com.revature.dao.ChannelDao;
 
 @Repository(value="ChannelDAO")

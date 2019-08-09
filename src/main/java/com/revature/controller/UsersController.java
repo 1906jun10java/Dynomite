@@ -28,7 +28,6 @@ public class UsersController {
 		this.userService = userService;
 	}
 	
-	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/login", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public UsersINF getCredentials(@RequestBody Credentials credentials) {
@@ -43,7 +42,7 @@ public class UsersController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/update", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public String updateUser(@RequestBody CreatedUserINF input) {
+	public String updateUser(@RequestBody UsersINF input) {
 		return userService.updateUser(input);
 	}
 	
