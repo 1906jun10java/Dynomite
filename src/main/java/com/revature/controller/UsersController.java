@@ -47,6 +47,12 @@ public class UsersController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
+	@PostMapping(value="/updatePass", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	public String updateUserPass(@RequestBody Credentials credential) {
+		return userService.updateUserPass(credential);
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/ban", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String banUser(@RequestBody String username) {
 		return userService.banUser(username);

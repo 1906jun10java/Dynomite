@@ -104,5 +104,21 @@ public class UsersDaoImpl implements UsersDao{
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public String updateUserPass(Credentials credential) {
+		Session s = sessionFactory.getCurrentSession();
+		try {
+			String hql = "FROM Users WHERE USERNAME='" + credential.getUsername() + "'";
+			List<Users> results = s.createQuery(hql).getResultList();
+			Users u = (Users) results.get(0);
+			u.setCredentials(credential);
+			s.update(u);
+			return "Password updated successfully.";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "An error occured, please try again.";
+		}
+	}
 
 }

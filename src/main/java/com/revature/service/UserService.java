@@ -34,6 +34,10 @@ public class UserService {
 	public String updateUser(UsersINF input) {
 		return this.usersDao.updateUser(input);
 	}
+	@Transactional
+	public String updateUserPass(Credentials credential) {
+		return this.usersDao.updateUserPass(credential);
+	}
 	
 
 }
