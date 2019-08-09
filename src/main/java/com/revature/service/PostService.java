@@ -22,8 +22,8 @@ public class PostService {
 		return this.postsDao.insertPost(info);
 	}
 	
-	public String deletePost(PostsINF info) {
-		return this.postsDao.deletePost(info);
+	public String deletePost(int id) {
+		return this.postsDao.deletePost(id);
 	}
 	
 	public String updatePost(PostsINF info) {

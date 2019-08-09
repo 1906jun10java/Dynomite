@@ -68,9 +68,11 @@ public class UsersDaoImpl implements UsersDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public String banUser(String username) {
+		//System.out.println(username);
 		Users u = null;
 		Session s = sessionFactory.getCurrentSession();
 		Credentials creds = s.get(Credentials.class, username);
+		//System.out.println(creds.getUsername());
 		if(creds.getUsername().equals(username)) {
 			String hql = "FROM Users WHERE USERNAME='" + username + "'";
 			List<Users> results = s.createQuery(hql).getResultList();

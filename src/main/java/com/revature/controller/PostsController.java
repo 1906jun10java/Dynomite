@@ -54,8 +54,8 @@ public class PostsController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/delete", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public String deletePost(@RequestBody PostsINF info) {
-		return postService.deletePost(info);
+	public String deletePost(@RequestBody int id) {
+		return postService.deletePost(id);
 	}
 	
 	@ResponseStatus(HttpStatus.OK)

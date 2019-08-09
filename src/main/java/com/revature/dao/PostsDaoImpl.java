@@ -59,18 +59,12 @@ public class PostsDaoImpl implements PostsDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public String deletePost(PostsINF input) {
+	public String deletePost(int id) {
 		Session s = sessionFactory.getCurrentSession();
 		try{
-			//Gets the channel
-			List<Channel> channelList = new ArrayList<>();
-			channelList = s.createQuery("from Channel WHERE channelName= '" + input.getChannelName() + "'").getResultList();
-			Channel c = channelList.get(0);
-			//Gets the user who posted
-			List<Users> userList = new ArrayList<>();
-			userList = s.createQuery("from Users WHERE username= '" + input.getUsername() + "'").getResultList();
-			Users u = userList.get(0);
-			Posts p = new Posts(input.getContent(), u, c, input.getLikes(), input.getCommentID());
+			List<Posts> postList = new ArrayList<>();
+			postList = s.createQuery("from Posts WHERE postID= '" + id + "'").getResultList();
+			Posts p = postList.get(0);
 			s.delete(p);
 			return "Post removed successfuly";
 		}catch(Exception e) {
