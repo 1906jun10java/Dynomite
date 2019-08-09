@@ -1,0 +1,36 @@
+<mat-toolbar>
+  
+  <span>Welcome to FacelessBook! Thanks for joining us!</span> <br>
+</mat-toolbar>
+<div>
+  <p id="hidden"></p>
+</div>
+<mat-card class="my-card">
+  <mat-card-content>
+    <form class="my-form">
+   <mat-form-field class="full-width">
+      <mat-label>First Name</mat-label>
+      <input  matInput  [(ngModel)]="u.firstName" placeholder="First name"  name="firstName" #firstName required>
+    </mat-form-field>
+   <mat-form-field class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input  matInput  [(ngModel)]="u.lastName" placeholder="Last Name" name="lastName"  #lastName required>
+   </mat-form-field>
+   <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input  matInput  [(ngModel)]="u.email" placeholder="Email" name="email" #email required>
+   </mat-form-field>
+   <mat-form-field class="full-width">
+    <mat-label>Username</mat-label>
+    <input  matInput  [(ngModel)]="u.username" placeholder="Username" type="text" name="username" #username required>
+ </mat-form-field>
+   <mat-form-field class="full-width">
+      <mat-label>Password</mat-label>
+      <input  matInput  [(ngModel)]="u.pass" placeholder="Password" type="password" name="pass" #pass required>
+   </mat-form-field>
+  </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button (click)="register()" color="primary">REGISTER</button>
+  </mat-card-actions>
+</mat-card>
