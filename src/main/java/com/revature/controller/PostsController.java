@@ -41,7 +41,7 @@ public class PostsController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@PostMapping(value="/byChannel", consumes=MediaType.TEXT_HTML_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="/byChannel", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<PostsINF> getPostsByChannelID(@RequestBody String channelName) {
 		return postService.getPostByChannelID(channelName);
 	}
