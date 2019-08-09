@@ -23,11 +23,11 @@ public class UserService {
 		return this.usersDao.authenticateUser(credentials);
 	}
 	@Transactional
-	public boolean createUser(CreatedUserINF input){
+	public String createUser(CreatedUserINF input){
 		return this.usersDao.createUser(input);
 	}
 	@Transactional
-	public boolean banUser(String username){
+	public String banUser(String username){
 		return this.usersDao.banUser(username);
 	}
 	

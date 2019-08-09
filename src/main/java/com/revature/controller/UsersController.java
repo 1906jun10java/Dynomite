@@ -37,13 +37,13 @@ public class UsersController {
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/signup", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public boolean createUser(@RequestBody CreatedUserINF input) {
+	public String createUser(@RequestBody CreatedUserINF input) {
 		return userService.createUser(input);
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping(value="/ban", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	public boolean banUser(@RequestBody String username) {
+	public String banUser(@RequestBody String username) {
 		return userService.banUser(username);
 	}
 

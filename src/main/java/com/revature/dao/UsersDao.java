@@ -7,7 +7,7 @@ import com.revature.beans.UsersINF;
 public interface UsersDao {
 
 	public UsersINF authenticateUser(Credentials credentials);
-	public boolean createUser(CreatedUserINF input);
-	public boolean banUser(String username);
+	public String createUser(CreatedUserINF input);
+	public String banUser(String username);
 	
 }

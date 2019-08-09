@@ -47,24 +47,27 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean createUser(CreatedUserINF input) {
+	public String createUser(CreatedUserINF input) {
 		Session s = sessionFactory.getCurrentSession();
 		try {
+			if(input.getPass() == "password" || input.getPass() == "Password") {
+				return "Password too generic, please try again with a new password.";
+			}
 			Credentials credential = new Credentials(input.getUsername(), input.getPass());
 			Users user = new Users(input.getFirstName(), input.getLastName(), null, input.getModStatus(), input.getAccessPermission(), input.getEmail(), input.getImageURL());
 			s.save(credential);
 			user.setCredentials(credential);
 			s.save(user);
-			return true;
+			return "User successfully created.";
 		}catch(Exception e) {
 			e.printStackTrace();
-			return false;
+			return "An error occured, please try again.";
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean banUser(String username) {
+	public String banUser(String username) {
 		Users u = null;
 		Session s = sessionFactory.getCurrentSession();
 		Credentials creds = s.get(Credentials.class, username);
@@ -74,11 +77,11 @@ public class UsersDaoImpl implements UsersDao{
 			u = (Users) results.get(0);
 			u.setAccess(0);
 			s.update(u);
-			return true;
+			return "User banned successfully.";
 		}
 		else {
-			System.out.println("COULD NOT FIND MATCHING USER");
-			return false;
+			//System.out.println("COULD NOT FIND MATCHING USER");
+			return "Could not find a matching user.";
 		}
 	}
 	
