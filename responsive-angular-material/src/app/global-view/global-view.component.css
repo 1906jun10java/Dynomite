@@ -1,0 +1,15 @@
+#global-view-grid{
+    display:grid;
+    grid-template-areas:
+      'list posts';
+  grid-template-columns:20% 80%;
+  }
+  
+  app-channel-list {
+    grid-area: list;
+  
+  }
+  
+  app-forum-posts{
+    grid-area: posts;
+  }

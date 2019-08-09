@@ -27,12 +27,13 @@ export class RegistrationComponentComponent implements OnInit {
 
 
   public register() :void {
-    console.log(this.u)
+    console.log(this.u);
     this.userService.registerUser(this.u)
     .subscribe(
       resp => {console.log(resp),
       this._router.navigate(['/login'])},
-      error => console.log(error)
+      error => {console.log(error),
+        this._router.navigate(['/login'])}
     );
   }
 

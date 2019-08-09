@@ -11,20 +11,22 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
   
-      <div class="flexbox">
-      <mat-form-field>
-          <input matInput value="{{this.user.email}}" placeholder="Email">
-      </mat-form-field>
+    <div class="flexbox">
+      <form>
+        <mat-form-field>
+            <input matInput [(ngModel)]="u.email" placeholder="{{this.user.email}}" name="email" #email>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput value="{{this.user.firstName}}" placeholder="First Name">
-      </mat-form-field>
-  
-      <mat-form-field>
-        <input matInput value="{{this.user.lastName}}" placeholder="Last Name">
-      </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="u.firstName" placeholder="{{this.user.firstName}}" name="firstName" #firstName>
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput [(ngModel)]="u.lastName" placeholder="{{this.user.lastName}}" name="lastName" #lastName>
+        </mat-form-field>
 
-      <button mat-flat-button color="primary">Submit</button>
+        <button mat-flat-button (click)="updateUser()" color="primary">Submit</button>
+      </form>
     </div>
     </mat-expansion-panel>
     <mat-expansion-panel (opened)="panelOpenState = true"
@@ -44,6 +46,6 @@
       <mat-form-field>
         <input matInput placeholder="Confrim Password">
       </mat-form-field>
-      <button mat-flat-button color="primary">Submit</button>
+      <button mat-flat-button (click)="updateUser()" color="primary">Submit</button>
     </mat-expansion-panel>
   </mat-accordion>

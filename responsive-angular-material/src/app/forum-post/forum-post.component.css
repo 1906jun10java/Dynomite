@@ -1,0 +1,31 @@
+.useravatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+    
+}
+  
+mat-card{
+    margin: 20px;
+    padding-left: 20px;
+}
+
+.avatarsizing{
+    margin-right: 20px;
+}
+
+input{
+flex-grow:1;
+border-radius: 100px;
+}
+
+.submit-new-comment{
+    width: 100%;
+    display:flex;
+
+}
+
+button{
+    margin:0 15px;
+    width: 100px;
+}

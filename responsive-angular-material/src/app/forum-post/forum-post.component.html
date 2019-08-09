@@ -1,0 +1,23 @@
+<mat-card>
+    <!-- This is the flex box-->
+  <!--  <div class="submit-new-comment"> -->
+       <!-- These are the children-->
+      
+        <input type="text" [(ngModel)]="post.content" placeholder="Create a new post" name="content" #content required>
+        <button type="button" mat-flat-button (click)="createPost()" href="/globalview" color="accent">Submit</button>
+      
+      <button mat-button>Clear</button>
+   
+    <!--</div> -->
+</mat-card>
+
+<mat-card *ngFor="let post of posts">
+  <form>  
+    <mat-card-header>
+        <mat-card-subtitle>@{{ post.username }} - This posts id: {{post.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>{{ post.content }} - {{ post.timeStamp }}</mat-card-content>
+    <button mat-button (click)="deletePost(post.id)">Delete</button>
+    <button style="display: none;" mat-button (click)="banUser(post.username)">Ban {{ post.username }}</button>
+  </form>
+</mat-card>

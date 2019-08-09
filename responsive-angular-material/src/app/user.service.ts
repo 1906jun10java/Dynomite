@@ -10,7 +10,8 @@ import { User } from './models/user.model';
 export class UserService {
 
 private baseUrl: string = "http://ec2-54-196-29-226.compute-1.amazonaws.com:8082/FacelessBook-0.0.1-SNAPSHOT/users/login";
-private registerUrl: string="http://ec2-54-196-29-226.compute-1.amazonaws.com:8082/FacelessBook-0.0.1-SNAPSHOT/users/signup"
+private registerUrl: string="http://ec2-54-196-29-226.compute-1.amazonaws.com:8082/FacelessBook-0.0.1-SNAPSHOT/users/signup";
+private updateUrl: string="http://ec2-54-196-29-226.compute-1.amazonaws.com:8082/FacelessBook-0.0.1-SNAPSHOT/users/update";
 
   public user: User;
 
@@ -22,8 +23,13 @@ private registerUrl: string="http://ec2-54-196-29-226.compute-1.amazonaws.com:80
   }
 
   public registerUser(bob){
-    console.log(bob)
+    console.log(bob);
     return this.http.post<any>(this.registerUrl, bob);
+  }
+
+  public updateUser(bob) {
+    console.log(bob);
+    return this.http.post<any>(this.updateUrl, bob)
   }
 
 }

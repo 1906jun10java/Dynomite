@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,13 +10,17 @@ import { User } from '../models/user.model';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+                private _router: Router) { }
 
   user: User = JSON.parse(window.localStorage.getItem('loggedUser'));
 
-  ngOnInit() {
+  routeToEdit()
+  {
+    this._router.navigate(['/profile-edit'])
+  }
 
-    console.log(this.userService.user);
+  ngOnInit() {
   }
 
 }

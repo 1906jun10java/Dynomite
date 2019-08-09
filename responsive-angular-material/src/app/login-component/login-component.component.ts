@@ -29,9 +29,10 @@ export class LoginComponentComponent implements OnInit {
     this.userService.loginUser(this.cred)
       .subscribe(
         resp =>  {this.storage.setItem('loggedUser', JSON.stringify(resp)),        //resp => this.storage.setItem('loggedUser', resp),
-        this._router.navigate([''])},
-        error => console.log(error)
-    );
+        this._router.navigate(['/globalview'])},
+        error => {console.log(error),
+        this._router.navigate([''])}
+      );
     this.userService.user = JSON.parse(this.storage.getItem('loggedUser'));
     console.log(this.userService.user);
 

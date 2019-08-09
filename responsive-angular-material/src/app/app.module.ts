@@ -10,6 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GlobalViewComponent } from './global-view/global-view.component';
+import { ChannelListComponent } from './channel-list/channel-list.component';
+import { ForumPostComponent } from './forum-post/forum-post.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
     RegistrationComponentComponent,
     LoginComponentComponent,
     ProfileComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    GlobalViewComponent,
+    ChannelListComponent,
+    ForumPostComponent
   ],
   imports: [
     HttpClientModule,
@@ -30,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
       { path: 'register', component: RegistrationComponentComponent },
       { path: 'login', component: LoginComponentComponent },
       { path: 'profile', component:ProfileComponent},
-      { path: 'profile-edit', component:ProfileEditComponent}
+      { path: 'profile-edit', component:ProfileEditComponent},
+      { path: 'globalview', component:GlobalViewComponent }
     ])],
        
   providers: [],
